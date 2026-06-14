@@ -166,23 +166,24 @@ http://localhost:8000
 
 ## 📷 Screenshot Aplikasi
 
+### Halaman Daftar
+![Login](Screenshots%20Caferate/daftar.png)
+
 ### Halaman Login
+![Login](Screenshots%20Caferate/login.png)
 
-*(Tambahkan screenshot di sini)*
-
-### Halaman Daftar Café
-
-*(Tambahkan screenshot di sini)*
-
-### Detail Café & Review
-
-*(Tambahkan screenshot di sini)*
+### Dashboard User
+![Login](Screenshots%20Caferate/dashboarduser.png)
 
 ### Dashboard Admin
+![Login](Screenshots%20Caferate/dashboardadmin.png)
 
-*(Tambahkan screenshot di sini)*
+### Halaman Detail Cafe & Review
+![Login](Screenshots%20Caferate/detailcafedanreview.png)
 
-### CRUD Café
+### Halaman Review Café
+![Login](Screenshots%20Caferate/review.png)
 
-*(Tambahkan screenshot di sini)*
+### Halaman CRUD Café
+![Login](Screenshots%20Caferate/CRUDcafe.png)
 
