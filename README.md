@@ -1,132 +1,188 @@
-# ☕ CaféRate — Final Project Web Development
+# ☕ CaféRate — Sistem Review Café Berbasis Web
 
-Sistem review café berbasis web menggunakan **Laravel 11** + **Blade** + **Tailwind CSS**.
+## 📌 Deskripsi Singkat
+
+CaféRate adalah aplikasi web yang memungkinkan pengguna mencari café, melihat detail café, memberikan review, serta mengunggah foto pengalaman mereka. Sistem juga menyediakan dashboard admin untuk mengelola data café dan memoderasi review pengguna.
 
 ---
 
-## 🚀 Cara Install
+## 🎯 Tujuan Pengembangan
 
-### 1. Clone / Extract Project
-```bash
-cd caferate
-```
+* Membantu pengguna menemukan café yang sesuai dengan preferensi mereka.
+* Menyediakan platform berbagi pengalaman melalui review dan foto.
+* Mempermudah pengelolaan data café melalui dashboard admin.
+* Menyediakan informasi dan penilaian café sebagai referensi bagi pengguna lain.
 
-### 2. Install Dependencies
+---
+
+## ✨ Fitur Utama
+
+### User
+
+* Registrasi akun
+* Login & Logout
+* Melihat daftar café
+* Filter dan pencarian café
+* Melihat detail café
+* Menulis review
+* Upload foto review
+* Melihat review pengguna lain
+
+### Admin
+
+* Login Admin
+* Dashboard statistik
+* Kelola data café (CRUD)
+* Moderasi review pengguna
+
+---
+
+## 🛠 Teknologi yang Digunakan
+
+| Kategori           | Teknologi                     |
+| ------------------ | ----------------------------- |
+| Backend            | Laravel 11                    |
+| Bahasa Pemrograman | PHP 8.2+                      |
+| Frontend           | Blade Template                |
+| Styling            | Tailwind CSS                  |
+| Database           | MySQL                         |
+| Storage            | Laravel Storage (Public Disk) |
+| Middleware         | Admin Middleware              |
+| Version Control    | Git & GitHub                  |
+
+---
+
+## 🗄 Struktur Database
+
+### users
+
+* id
+* name
+* email
+* password
+* role
+
+### cafes
+
+* id
+* name
+* location
+* description
+* image
+
+### reviews
+
+* id
+* user_id
+* cafe_id
+* rating
+* comment
+
+### review_photos
+
+* id
+* review_id
+* photo_path
+
+### Relasi
+
+* User → Review (1:M)
+* Café → Review (1:M)
+* Review → Review Photo (1:M)
+
+---
+
+## 🔄 Alur Sistem
+
+### User
+
+Register/Login → Lihat Daftar Café → Filter Café → Buka Detail Café → Tulis Review → Upload Foto → Review Ditampilkan
+
+### Admin
+
+Login → Dashboard Statistik → Kelola Data Café (CRUD) → Moderasi Review
+
+---
+
+## 🚀 Instalasi
+
+### 1. Install Dependency
+
 ```bash
 composer install
 ```
 
-### 3. Konfigurasi Environment
+### 2. Konfigurasi Environment
+
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-Edit `.env` sesuaikan database:
+### 3. Konfigurasi Database
+
+Edit file `.env`
+
 ```env
 DB_DATABASE=caferate
 DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-### 4. Buat Database
-Buat database MySQL bernama `caferate`, lalu:
+### 4. Migrasi Database dan Seeder
+
 ```bash
 php artisan migrate --seed
 ```
 
 ### 5. Storage Link
+
 ```bash
 php artisan storage:link
 ```
 
-### 6. Jalankan Server
+### 6. Jalankan Aplikasi
+
 ```bash
 php artisan serve
 ```
 
-Buka: **http://localhost:8000**
+Akses melalui:
+
+```text
+http://localhost:8000
+```
 
 ---
 
 ## 👤 Akun Default
 
-| Role  | Email                | Password |
-|-------|----------------------|----------|
-| Admin | admin@caferate.com   | admin123 |
-| User  | user@caferate.com    | user123  |
+| Role  | Email                                           | Password |
+| ----- | ----------------------------------------------- | -------- |
+| Admin | [admin@caferate.com](mailto:admin@caferate.com) | admin123 |
+| User  | [user@caferate.com](mailto:user@caferate.com)   | user123  |
 
 ---
 
-## ✅ Fitur yang Tersedia
+## 📷 Screenshot Aplikasi
 
-| No | Fitur                        | Status |
-|----|------------------------------|--------|
-| 1  | Halaman Registrasi           | ✅     |
-| 2  | Halaman Login & Logout       | ✅     |
-| 3  | Role User & Admin + Middleware| ✅     |
-| 4  | Halaman Daftar Café          | ✅     |
-| 5  | Halaman Detail Café          | ✅     |
-| 6  | Filter Pencarian Café        | ✅     |
-| 7  | Form Review per Aspek        | ✅     |
-| 8  | Simpan & Tampil Review       | ✅     |
-| 9  | Upload Foto saat Review      | ✅     |
-| 10 | Dashboard Admin + Statistik  | ✅     |
-| 11 | CRUD Café + Moderasi Review  | ✅     |
+### Halaman Login
 
----
+*(Tambahkan screenshot di sini)*
 
-## 📁 Struktur Project
+### Halaman Daftar Café
 
-```
-caferate/
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/
-│   │   │   ├── AuthController.php
-│   │   │   ├── CafeController.php
-│   │   │   ├── ReviewController.php
-│   │   │   └── Admin/
-│   │   │       ├── AdminDashboardController.php
-│   │   │       ├── AdminCafeController.php
-│   │   │       └── AdminReviewController.php
-│   │   └── Middleware/
-│   │       └── AdminMiddleware.php
-│   └── Models/
-│       ├── User.php
-│       ├── Cafe.php
-│       ├── Review.php
-│       └── ReviewPhoto.php
-├── database/
-│   ├── migrations/
-│   └── seeders/
-├── resources/views/
-│   ├── layouts/
-│   │   ├── app.blade.php       (layout publik)
-│   │   └── admin.blade.php     (layout admin + sidebar)
-│   ├── auth/
-│   │   ├── login.blade.php
-│   │   └── register.blade.php
-│   ├── cafes/
-│   │   ├── index.blade.php     (daftar café + filter)
-│   │   └── show.blade.php      (detail café + review)
-│   └── admin/
-│       ├── dashboard.blade.php
-│       ├── cafes/
-│       │   ├── index.blade.php
-│       │   ├── create.blade.php
-│       │   └── edit.blade.php
-│       └── reviews/
-│           └── index.blade.php
-└── routes/
-    └── web.php
-```
+*(Tambahkan screenshot di sini)*
 
----
+### Detail Café & Review
 
-## 🛠 Tech Stack
+*(Tambahkan screenshot di sini)*
 
-- **Backend**: Laravel 11 (PHP 8.2+)
-- **Frontend**: Blade Template + Tailwind CSS CDN
-- **Database**: MySQL
-- **Storage**: Laravel Storage (public disk)
+### Dashboard Admin
+
+*(Tambahkan screenshot di sini)*
+
+### CRUD Café
+
+*(Tambahkan screenshot di sini)*
+
